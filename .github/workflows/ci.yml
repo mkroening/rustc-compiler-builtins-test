@@ -12,7 +12,7 @@ env:
 jobs:
   build:
     name: Build
-    runs-on: macos-13
+    runs-on: macos-13-arm64
     steps:
       - uses: actions/checkout@v6
         with:
@@ -22,7 +22,7 @@ jobs:
         with:
           path: this
       - run: cp this/config.toml .
-      - run: ./x build
+      - run: python3.11 x.py build
       - run: rustup toolchain link dev1 build/aarch64-apple-darwin/stage1
       - run: rustc +dev1 --crate-type staticlib --target x86_64-unknown-none this/foo.rs
       - run: objdump --archive-headers libfoo.a
