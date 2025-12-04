@@ -1,0 +1,14 @@
+changelog-seen = 2
+
+[llvm]
+targets = "AArch64;X86"
+
+[build]
+target = [
+    "aarch64-apple-darwin",
+    "x86_64-unknown-none",
+]
+
+[rust]
+llvm-tools = true
+lld = true

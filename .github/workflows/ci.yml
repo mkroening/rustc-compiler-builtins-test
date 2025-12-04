@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  merge_group:
+
+env:
+  RUSTFLAGS: -Dwarnings
+  RUSTDOCFLAGS: -Dwarnings
+
+jobs:
+  build:
+    name: Build
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          repository: rust-lang/rust
+          ref: 5984b1d86f0e7221c83c0d63b8d63fc0de9c5760
+      - uses: actions/checkout@v6
+        with:
+          path: this
+      - run: cp this/config.toml .
+      - run: ./x build
+      - run: rustup toolchain link dev1 build/aarch64-apple-darwin/stage1
+      - run: rustc +dev1 --crate-type staticlib --target x86_64-unknown-none this/foo.rs
+      - run: objdump --archive-headers libfoo.a
