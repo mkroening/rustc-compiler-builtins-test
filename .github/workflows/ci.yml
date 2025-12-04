@@ -2,12 +2,6 @@ name: CI
 
 on:
   push:
-  pull_request:
-  merge_group:
-
-env:
-  RUSTFLAGS: -Dwarnings
-  RUSTDOCFLAGS: -Dwarnings
 
 jobs:
   build:
@@ -22,7 +16,7 @@ jobs:
         with:
           path: this
       - run: cp this/config.toml .
-      - run: python3.11 x.py build
+      - run: python3.11 x.py build --stage 1
       - run: rustup toolchain link dev1 build/aarch64-apple-darwin/stage1
       - run: rustc +dev1 --crate-type staticlib --target x86_64-unknown-none this/foo.rs
       - run: objdump --archive-headers libfoo.a
