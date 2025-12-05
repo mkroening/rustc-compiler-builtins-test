@@ -5,12 +5,12 @@ on: push
 jobs:
   build:
     name: Build
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v6
         with:
           repository: rust-lang/rust
-          ref: b6d2d841bcf4b77343b159f134c7d39c2dd4ceaa # 2024-03-06
+          ref: 7d3702e472b99be0f5de6608dd87af1df8f99428 # 2024-03-07
       - uses: actions/checkout@v6
         with:
           path: this

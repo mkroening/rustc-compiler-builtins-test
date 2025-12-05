@@ -1,6 +1,7 @@
 change-id = 118724
 
 [llvm]
+download-ci-llvm = false
 targets = "AArch64;X86"
 
 [build]
