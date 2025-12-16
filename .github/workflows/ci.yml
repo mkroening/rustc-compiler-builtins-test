@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: rust-lang/rust
-          ref: fb4aebddd18d258046ddb51fd41589295259a0fa # 2024-10-01
+          ref: d117b7f211835282b3b177dc64245fff0327c04c # 2025-01-01
       - uses: actions/checkout@v6
         with:
           path: this
